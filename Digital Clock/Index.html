@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    
+    <style>
+      .container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 20vh;
+    width: 200vh;
+    
+    background-color: black;
+  }
+  
+  .clock {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 0.1em;
+    color: white;
+  }
+  #heading {display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 10vh;
+    width: 200vh;
+    color: azure;
+    
+    background-color: #17776a;
+
+  }
+  #Footer {display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 05vh;
+    width: 200vh;
+    color: azure;
+    background-color: #444317;
+  }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="heading"><h1>Digital Clock:</h1><br></div>
+    <div class="container">
+        
+      <div class="clock">
+        <span id="hours"></span>
+        <span>:</span>
+        <span id="minutes"></span>
+        <span>:</span>
+        <span id="seconds"></span>
+        <span id="AP"></span>
+    
+      </div>
+    </div>
+    <div id="Footer"><h3>@Sandwip............@</h3></div>
+    <script>
+
+function digitalClock() {
+    const date = new Date(); // this date variable picks system date.
+    let hours = date.getHours(); // This hours variable converted time as hours.
+    let minutes = date.getMinutes(); // This minutes variable converted time as minutes.
+    let seconds = date.getSeconds(); // This seconds variable converted time as seconds.
+
+    let myTimeAP=hours>= 12 ? "PM":"AM"; // This ternary operator ensure the time as AM or PM.
+    hours=hours%12||12; // This logical operation calculate the time in 12 hours format.
+    hours = hours < 10 ? "0" + hours : hours; // This ternary operator shows the time in two digits.
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    document.getElementById("hours").textContent = hours; // This statement pick the time as hours and show on the browser by using hours id in html.
+    document.getElementById("minutes").textContent = minutes; // This statement pick the time as minutes and show on the browser by using minutes id in html.
+    document.getElementById("seconds").textContent = seconds;// This statement pick the time as seconds and show on the browser by using seconds id in html.
+    document.getElementById("AP").textContent = myTimeAP; // This statement pick the time as AM or PM and show on the browser by using AP id html.
+    
+  }
+  setInterval(digitalClock, 1000); //This function executes a specified function repeatedly at a set interval. It takes two arguments: the first is the function to be executed, and the second is the time interval in milliseconds between each execution. I use 1000 milliseconds  
+  
+    </script>
+    
+  </body>
+</html>
